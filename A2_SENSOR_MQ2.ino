@@ -1,4 +1,8 @@
-
+/*
+MEDIR LA CONCENTRACIÓN DE GASES CON EL SENSOR MQ2
+Código por: Ulises Chávez 
+Fecha: 01/03/2023
+*/
 
 void setup() {
   Serial.begin(9600);
