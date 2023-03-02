@@ -1,4 +1,9 @@
+/*
+MEDIR LA HUMEDAD DEL SUELO CON ARDUINO E HIGRÓMETRO FC-28
 
+Código por: Ulises Chávez 
+Fecha: 01/03/2023
+*/
 
 const int sensorPin = A0;
 void setup() {
