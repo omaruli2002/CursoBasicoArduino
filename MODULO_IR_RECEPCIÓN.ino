@@ -1,21 +1,18 @@
-#include <IRremote.h>
+#include <IRremote.h>   
 
-const int RECV_PIN = 9;
+int IR = 9;     
+ 
+void setup() { 
+  Serial.begin(9600);           
+  IrReceiver.begin(IR, DISABLE_LED_FEEDBACK);     
+} 
 
-IRrecv irrecv(RECV_PIN);
-decode_results results;
-
-void setup()
-{
-   Serial.begin(9600);
-   irrecv.enableIRIn();
-}
-
-void loop()
-{
-   if (irrecv.decode(&results))
-   {
-      Serial.println(results.value, HEX);
-      irrecv.resume();
-   }
+void loop() { 
+  if (IrReceiver.decode()) {    
+    Serial.print("Codigo Recibido: ");     
+    Serial.println(IrReceiver.decodedIRData.decodedRawData, HEX);  
+    IrReceiver.resume();  
+    Serial.println("----------------------------");          
+  }
+  delay (250);                 
 }
