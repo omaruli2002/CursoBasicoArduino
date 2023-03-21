@@ -1,3 +1,5 @@
+// LINK DE LIBRERIA: https://pablovillanueva.mx/2019/02/09/arduino-y-real-time-clock-rtc-ds1302/
+
 #include <virtuabotixRTC.h> //Libreria
 
 // CLK -> 6, DAT -> 7, RST -> 8
