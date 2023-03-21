@@ -1,11 +1,12 @@
 #include <SPI.h>
 #include <MFRC522.h>
-
+int buzzer = 3;
 #define RST_PIN	9    //Pin 9 para el reset del RC522
 #define SS_PIN	10   //Pin 10 para el SS (SDA) del RC522
 MFRC522 mfrc522(SS_PIN, RST_PIN); ///Creamos el objeto para el RC522
 
 void setup() {
+	pinMode(buzzer, OUTPUT);
 	Serial.begin(9600); //Iniciamos La comunicacion serial
 	SPI.begin();        //Iniciamos el Bus SPI
 	mfrc522.PCD_Init(); // Iniciamos el MFRC522
@@ -31,12 +32,46 @@ void loop() {
                   } 
                   Serial.print("     ");                 
                   //comparamos los UID para determinar si es uno de nuestros usuarios  
-                  if(compareArray(ActualUID,Usuario1))
+                  if(compareArray(ActualUID,Usuario1)){
                     Serial.println("Acceso concedido...");
-                  else if(compareArray(ActualUID,Usuario2))
+		    digitalWrite(buzzer, HIGH);
+		    delay(200);
+		    digitalWrite(buzzer, LOW);
+		    delay(200);
+		    digitalWrite(buzzer, HIGH);
+		    delay(200);
+		    digitalWrite(buzzer, LOW);
+		    delay(200);
+		    digitalWrite(buzzer, HIGH);
+		    delay(200);
+		    digitalWrite(buzzer, LOW);
+		    delay(200);
+		    digitalWrite(buzzer, HIGH);
+		    delay(200);
+		    digitalWrite(buzzer, LOW);
+		  }else if{(compareArray(ActualUID,Usuario2))
                     Serial.println("Acceso concedido...");
-                  else
+		    digitalWrite(buzzer, HIGH);
+		    delay(200);
+		    digitalWrite(buzzer, LOW);
+		    delay(200);
+		    digitalWrite(buzzer, HIGH);
+		    delay(200);
+		    digitalWrite(buzzer, LOW);
+		    delay(200);
+		    digitalWrite(buzzer, HIGH);
+		    delay(200);
+		    digitalWrite(buzzer, LOW);
+		    delay(200);
+		    digitalWrite(buzzer, HIGH);
+		    delay(200);
+		    digitalWrite(buzzer, LOW);
+			 }else{
                     Serial.println("Acceso denegado...");
+		    digitalWrite(buzzer, HIGH);
+		    delay(1500);
+		    digitalWrite(buzzer, LOW);
+		  }
                   
                   // Terminamos la lectura de la tarjeta tarjeta  actual
                   mfrc522.PICC_HaltA();
